@@ -1,0 +1,148 @@
+/* Global responsive base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+/* Fluid / responsive font size: adjusts with viewport width */
+html { font-size: clamp(14px, 1.6vw, 18px); }
+
+body {
+  margin: 0;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  line-height: 1.4;
+}
+
+h2, p {
+  margin: 10px;
+}
+
+/* Gallery / destination photos: fluid and wrapping */
+.reisbestemmingfotos {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 8px;
+}
+
+.reisbestemmingfotos img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.title {
+  text-align: center;
+  color: #000000;
+  padding: 12px 8px;
+}
+
+/* Navigation: use flex so it wraps on small screens */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 5px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+ul li { float: none; }
+
+ul li a {
+  display: block;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 12px 14px;
+  text-decoration: none;
+}
+
+ul li a:hover { background-color: #1f6aeb; border-radius: 20px;}
+ul li a.active { background-color: #54a6ff; border-radius: 20px;}
+
+/* Contact form: fluid width with sensible max */
+.contact-form {
+  width: 92%;
+  max-width: 680px;
+  margin: 16px auto;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.submit {
+  background-color: #2856ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* About section: mobile-first column, landscape/large screens show row */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  text-align: center;
+}
+
+.about-image {
+  width: 80%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  padding: 0;
+}
+
+.abouttext {
+  padding: 0 12px;
+  text-align: center;
+}
+
+/* Breakpoints: medium and up -> show row layout */
+@media (min-width: 601px) {
+  .about-section { flex-direction: row; align-items: flex-start; }
+  .about-image { width: 30%; max-width: 300px; }
+  .contact-form { padding: 20px; }
+  .reisbestemmingfotos img { width: 280px; }
+}
+
+/* Larger screens */
+@media (min-width: 1024px) {
+  .reisbestemmingfotos img { width: 360px; }
+  .contact-form { max-width: 820px; }
+}
+
+/* Orientation-specific tweaks */
+@media (orientation: portrait) {
+  .title { padding-top: 10px; }
+  .about-section { gap: 14px; }
+}
+
+@media (orientation: landscape) {
+  .about-section { flex-direction: row; }
+  .reisbestemmingfotos { gap: 20px; }
+}
+
+/* Small screens tweak */
+@media (max-width: 420px) {
+  ul li a { padding: 10px 8px; font-size: 0.95rem; }
+  .about-image { width: 90%; max-width: 200px; }
+  .contact-form { width: 96%; padding: 12px; }
+}
